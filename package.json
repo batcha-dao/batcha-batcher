@@ -4,7 +4,7 @@
   "description": "Daemon of BATCHA!",
   "main": "index.js",
   "scripts": {
-    "start": "node daemon/daemon.js",
+    "start": "nodemon daemon/daemon.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,8 @@
   "homepage": "https://github.com/batcha-dao/batcha-batcher#readme",
   "dependencies": {
     "ethers": "^5.5.2",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15",
+    "yargs": "^17.3.0"
   }
 }

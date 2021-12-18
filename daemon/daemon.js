@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { ethers } = require('ethers');
 const express = require('express');
+const args = require('yargs').argv;
 
 const configs = JSON.parse(fs.readFileSync('daemon/config.json'));
 
@@ -10,6 +11,7 @@ let provider = ethers.getDefaultProvider('ropsten'); // ropsten testnet
 // });
 
 const app = express();
+app.use(express.json());
 
 // set wallet
 const ownerAddress = configs.ownerAddress;
@@ -24,8 +26,30 @@ const relayer = new ethers.Contract(
 );
 const relayerWithSigner = relayer.connect(wallet);
 
-app.get("/", (req, res) => {
-    res.send("Hello, World!");
+// express
+// app.get("/", (req, res) => {
+//     res.send("Hello, World!");
+// });
+
+app.get("/api/vault/:account", async (req, res) => {
+    balance = await relayer.vault(req.params.account);
+    res.json({ "balance": balance });
 });
 
-app.listen(3000, () => console.log("Daemon of BATCHA!"));
+app.post("/api/deposit", async (req, res) => {
+    amount = req.body.amount;
+    returnData = await relayerWithSigner.deposit({value: amount});
+    res.json({ "returnData": returnData });
+});
+
+app.post("/api/withdraw", async (req, res) => {
+    amount = req.body.amount;
+    returnData = await relayerWithSigner.withdraw(amount);
+    res.json({ "returnData": returnData });
+});
+
+// TODO: functions
+
+// listen
+port = args.port || 3000;
+app.listen(port, () => console.log("Daemon of BATCHA!", "Port:", port));
