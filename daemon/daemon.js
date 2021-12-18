@@ -5,7 +5,7 @@ const args = require('yargs').argv;
 
 const configs = JSON.parse(fs.readFileSync('daemon/config.json'));
 
-let provider = ethers.getDefaultProvider('ropsten'); // ropsten testnet
+let provider = ethers.getDefaultProvider('kovan'); // kovan testnet
 // provider.getBlockNumber().then((blockNumber) => {
 //     console.log("Current block number: " + blockNumber);
 // });
