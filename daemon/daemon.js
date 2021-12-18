@@ -36,6 +36,9 @@ app.get("/api/vault/:account", async (req, res) => {
     res.json({ "balance": balance });
 });
 
+// TODO: implement contract's functions
+// bmsg
+
 app.post("/api/deposit", async (req, res) => {
     amount = req.body.amount;
     returnData = await relayerWithSigner.deposit({value: amount});
@@ -48,7 +51,12 @@ app.post("/api/withdraw", async (req, res) => {
     res.json({ "returnData": returnData });
 });
 
-// TODO: functions
+// TODO: implement contract's functions
+// tryDispatch
+// trySingleCall
+
+// TODO: implement BATCH service
+// TODO: implement RTC service
 
 // listen
 port = args.port || 3000;
