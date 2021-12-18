@@ -1,0 +1,24 @@
+{
+  "name": "batcha-batcher",
+  "version": "1.0.0",
+  "description": "Daemon of BATCHA!",
+  "main": "index.js",
+  "scripts": {
+    "start": "node daemon/daemon.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/batcha-dao/batcha-batcher.git"
+  },
+  "author": "lukepark327",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/batcha-dao/batcha-batcher/issues"
+  },
+  "homepage": "https://github.com/batcha-dao/batcha-batcher#readme",
+  "dependencies": {
+    "ethers": "^5.5.2",
+    "express": "^4.17.2"
+  }
+}

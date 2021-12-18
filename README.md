@@ -1,2 +1,3 @@
 # batcha-batcher
-blockchain of batcha.
+
+Daemon of BATCHA!
